@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarinaRicambi - Ricambi Nautici di Qualità</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0a2463;
+            --secondary-blue: #1e90ff;
+            --accent-color: #ff7f50;
+            --light-color: #f8f9fa;
+            --dark-color: #333;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 36, 99, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background: rgba(10, 36, 99, 0.98);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 200px;
+            transition: var(--transition);
+        }
+
+        .logo:hover img {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icons a {
+            color: white;
+            font-size: 18px;
+            margin-left: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-icons a:hover {
+            color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent-color);
+            color: white;
+            font-size: 12px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.8s;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(255, 127, 80, 0.3);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 1.1s;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 127, 80, 0.4);
+            background: #ff6b38;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 50%;
+            height: 90%;
+            background: url('https://images.unsplash.com/photo-1530533718754-001d2668365a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80') no-repeat center bottom/contain;
+            opacity: 0;
+            animation: fadeInRight 1.5s forwards 1s;
+        }
+
+        /* Image Carousel */
+        .carousel {
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            height: 400px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            height: 100%;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(10, 36, 99, 0.9), transparent);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .carousel-caption h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .carousel-control {
+            background: rgba(255, 255, 255, 0.8);
+            color: var(--primary-blue);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-control:hover {
+            background: var(--accent-color);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .carousel-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .carousel-indicator.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* Featured Products */
+        .section-title {
+            text-align: center;
+            margin: 80px 0 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            display: inline-block;
+            padding-bottom: 10px;
+            position: relative;
+            color: var(--primary-blue);
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+            border: 1px solid #eaeaea;
+        }
+
+        .product.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            background: #f1f5f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: var(--transition);
+        }
+
+        .product:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+        }
+
+        .product-price {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .product-btn {
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .product-btn:hover {
+            background: var(--secondary-blue);
+        }
+
+        .product-btn.added {
+            background: var(--accent-color);
+        }
+
+        /* Categories */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 80px;
+        }
+
+        .category {
+            position: relative;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .category.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .category:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .category-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .category:hover .category-image {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(10, 36, 99, 0.8), transparent);
+            color: white;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Services */
+        .services {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+            padding: 80px 0;
+            margin: 80px 0;
+            color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .service i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .service h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            text-align: center;
+            padding: 60px 0;
+            background: var(--light-color);
+            margin-bottom: 80px;
+        }
+
+        .newsletter h2 {
+            margin-bottom: 20px;
+            color: var(--primary-blue);
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .newsletter-btn {
+            padding: 15px 30px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-btn:hover {
+            background: #ff6b38;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-color);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Cart Notification */
+        .cart-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: var(--transition);
+            z-index: 1000;
+        }
+
+        .cart-notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero-image {
+                width: 45%;
+            }
+            
+            .carousel {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 10px;
+            }
+            
+            .hero {
+                text-align: center;
+                padding-top: 60px;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .categories {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 5px;
+            }
+            
+            .carousel {
+                height: 300px;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-links li {
+                margin: 5px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .carousel {
+                height: 250px;
+            }
+            
+            .carousel-caption {
+                padding: 15px;
+            }
+            
+            .carousel-caption h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo"><img src="logo.png" alt="MarinaRicambi"></a>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Prodotti</a></li>
+                    <li><a href="#">Categorie</a></li>
+                    <li><a href="#">Servizi</a></li>
+                    <li><a href="#">Contatti</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#" id="cart-icon"><i class="fas fa-shopping-cart"></i><span class="cart-count">0</span></a>
+                    <a href="#"><i class="fas fa-user"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Ricambi nautici di qualità superiore</h1>
+                <p>Forniamo ricambi e accessori per imbarcazioni di alta qualità con consegna rapida in tutta Italia. La tua risorsa affidabile per tutti i bisogni nautici.</p>
+                <a href="#" class="btn">Scopri i prodotti</a>
+            </div>
+        </div>
+        <div class="hero-image"></div>
+    </section>
+
+    <!-- Image Carousel -->
+    <section class="container">
+        <div class="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item">
+                    <img src="https://mlivd5xirlrn.i.optimole.com/TrCl_Ko-2o61VVRg/w:auto/h:auto/q:90/https://www.marina-balear.com/pure-yachting/en/wp-content/uploads/2020/11/luxury-yacht-pershing-80-halley-balearic-islands-rear.jpg" alt="Motori marini">
+                    <div class="carousel-caption">
+                        <h3>Motori Marini di Alta Qualità</h3>
+                        <p>Scopri la nostra gamma di motori e accessori</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://photos.superyachtapi.com/download/193913/extra-large" alt="Accessori nautici">
+                    <div class="carousel-caption">
+                        <h3>Accessori Nautici Premium</h3>
+                        <p>Tutto ciò che serve per la tua imbarcazione</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="https://virginislandsailing.com/wp-content/uploads/2020/05/3-Crewed-Power-Catamaran-Ultra.jpg" alt="Componenti nautici">
+                    <div class="carousel-caption">
+                        <h3>Componenti di Precisione</h3>
+                        <p>Per prestazioni ottimali in mare</p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <div class="carousel-control prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="carousel-control next"><i class="fas fa-chevron-right"></i></div>
+            </div>
+            <div class="carousel-indicators">
+                <div class="carousel-indicator active"></div>
+                <div class="carousel-indicator"></div>
+                <div class="carousel-indicator"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Prodotti in Evidenza</h2>
+        </div>
+        <div class="products">
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://tse4.mm.bing.net/th/id/OIP.OcKiH2QsHtMVpYVPEj5AYAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Elica nautica">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Elica in Ottone</h3>
+                    <div class="product-price">50,00 €</div>
+                    <button class="product-btn" data-id="1" data-name="Elica in Ottone" data-price="429.00">Aggiungi al Carrello</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.c-nqSpUH1J4sSPCv1ETxRQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Timone nautico">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Timone Classico</h3>
+                    <div class="product-price">80,00 €</div>
+                    <button class="product-btn" data-id="2" data-name="Timone Classico" data-price="289.00">Aggiungi al Carrello</button>
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.8DN75yK2tMYr24FhVvgUqgHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Accessori nautici">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Accessori Nautici Premium</h3>
+                    <div class="product-price">40,00 €</div>
+                    <button class="product-btn" data-id="3" data-name="Accessori Nautici Premium" data-price="159.00">Aggiungi al Carrello</button>
+                </div>
+            </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Le Nostre Categorie</h2>
+        </div>
+        <div class="categories">
+            <div class="category">
+                <img src="https://www.ammarine.com/img/product/217588-Z.jpg" alt="Motori" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-title">Motori e Eliche</h3>
+                    <a href="#" class="btn">Esplora</a>
+                </div>
+            </div>
+            <div class="category">
+                <img src="https://i.ebayimg.com/images/g/SHUAAOSwb95jjbLE/s-l1600.jpg" alt="Timoneria" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-title">Timoneria e Governo</h3>
+                    <a href="#" class="btn">Esplora</a>
+                </div>
+            </div>
+            <div class="category">
+                <img src="https://tse3.mm.bing.net/th/id/OIP.xQ5nSmgsi8srAq5ARwJ2HQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Accessori" class="category-image">
+                <div class="category-overlay">
+                    <h3 class="category-title">Accessori Nautici</h3>
+                    <a href="#" class="btn">Esplora</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>I Nostri Servizi</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>Spedizione Veloce</h3>
+                    <p>Consegna in tutta Italia in 24-48 ore per ordini entro le 12:00.</p>
+                </div>
+                <div class="service">
+                    <i class="fas fa-tools"></i>
+                    <h3>Assistenza Tecnica</h3>
+                    <p>Team di esperti disponibile per consulenza e supporto tecnico.</p>
+                </div>
+                <div class="service">
+                    <i class="fas fa-undo"></i>
+                    <h3>Garanzia Soddisfatti</h3>
+                    <p>30 giorni per resi gratuiti e garanzia su tutti i prodotti.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Iscriviti alla nostra newsletter</h2>
+            <p>Ricevi offerte esclusive, novità sui prodotti e consigli per la manutenzione della tua barca.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="La tua email">
+                <button type="submit" class="newsletter-btn">Iscriviti</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>MarinaRicambi</h3>
+                    <p>Il tuo fornitore affidabile di ricambi nautici di alta qualità dal 1995.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Rapidi</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Prodotti</a></li>
+                        <li><a href="#">Categorie</a></li>
+                        <li><a href="#">Servizi</a></li>
+                        <li><a href="#">Contatti</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Informazioni</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Spedizione e resi</a></li>
+                        <li><a href="#">Termini e condizioni</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contatti</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Via del Mare 123, Genova</li>
+                        <li><i class="fas fa-phone"></i> +39 010 123 4567</li>
+                        <li><i class="fas fa-envelope"></i> info@marinaricambi.it</li>
+                        <li><i class="fas fa-clock"></i> Lun-Ven: 9:00-18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 MarinaRicambi. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Notification -->
+    <div class="cart-notification" id="cartNotification">
+        Prodotto aggiunto al carrello!
+    </div>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.product, .category, .service');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('in-view');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+        // Initial call to check elements already in view
+        animateOnScroll();
+
+        // Image Carousel functionality
+        const carousel = document.querySelector('.carousel-inner');
+        const items = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicator');
+        const prevBtn = document.querySelector('.carousel-control.prev');
+        const nextBtn = document.querySelector('.carousel-control.next');
+        let currentIndex = 0;
+        let interval;
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, index) => {
+                if (index === currentIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % items.length;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            updateCarousel();
+        }
+
+        function startCarousel() {
+            interval = setInterval(nextSlide, 5000);
+        }
+
+        function stopCarousel() {
+            clearInterval(interval);
+        }
+
+        // Event listeners for carousel controls
+        nextBtn.addEventListener('click', () => {
+            stopCarousel();
+            nextSlide();
+            startCarousel();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            stopCarousel();
+            prevSlide();
+            startCarousel();
+        });
+
+        // Event listeners for indicators
+        indicators.forEach((indicator, index) => {
+            indicator.addEventListener('click', () => {
+                stopCarousel();
+                currentIndex = index;
+                updateCarousel();
+                startCarousel();
+            });
+        });
+
+        // Start the carousel
+        startCarousel();
+
+        // Pause carousel on hover
+        document.querySelector('.carousel').addEventListener('mouseenter', stopCarousel);
+        document.querySelector('.carousel').addEventListener('mouseleave', startCarousel);
+
+        // Cart functionality
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const cartCount = document.querySelector('.cart-count');
+        const cartNotification = document.getElementById('cartNotification');
+
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        function addToCart(productId, productName, productPrice) {
+            const existingProduct = cart.find(item => item.id === productId);
+            
+            if (existingProduct) {
+                existingProduct.quantity += 1;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: parseFloat(productPrice),
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count
+            updateCartCount();
+            
+            // Show notification
+            cartNotification.textContent = `${productName} aggiunto al carrello!`;
+            cartNotification.classList.add('show');
+            
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                cartNotification.classList.remove('show');
+            }, 3000);
+            
+            // Update button text temporarily
+            const button = document.querySelector(`.product-btn[data-id="${productId}"]`);
+            const originalText = button.textContent;
+            button.textContent = "Aggiunto!";
+            button.classList.add('added');
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.classList.remove('added');
+            }, 2000);
+        }
+
+        // Event listeners for add to cart buttons
+        document.querySelectorAll('.product-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                const productName = this.getAttribute('data-name');
+                const productPrice = this.getAttribute('data-price');
+                
+                addToCart(productId, productName, productPrice);
+            });
+        });
+
+        // Initialize cart count on page load
+        updateCartCount();
+    </script>
+</body>
+</html>
