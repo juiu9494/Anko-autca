@@ -1164,19 +1164,160 @@ Fax 071202090</li>
             </div>
             <div>
         </div>
-<!-- Carte Google Maps stylée -->
-<div style="width: 100%; height: 400px; margin-top: 50px;">
-  <iframe
-    width="100%"
-    height="100%"
-    frameborder="0"
-    style="border:0; filter: grayscale(30%) brightness(110%);"
-    src="<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.6943581216324!2d13.5047971!3d43.6129051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d7f99161166cd%3A0x5528d7fae5c13929!2sAnkonautica!5e0!3m2!1sfr!2snl!4v1757770594993!5m2!1sfr!2snl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
-    allowfullscreen=""
-    loading="lazy"
-    referrerpolicy="no-referrer-when-downgrade">
-  </iframe>
-</div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carte Google Maps Corrigée</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            padding: 25px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #555;
+            background: #f9f9f9;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 500px;
+            padding: 20px;
+            background: #f1f5f9;
+        }
+        
+        .map-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 5px solid white;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(30%) brightness(110%) contrast(105%);
+            transition: filter 0.5s ease;
+        }
+        
+        iframe:hover {
+            filter: grayscale(0%) brightness(100%) contrast(100%);
+        }
+        
+        .info-box {
+            background: #2c3e50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        .info-box a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .info-box a:hover {
+            text-decoration: underline;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .map-container {
+                height: 350px;
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Notre Emplacement</h1>
+            <p>Venez nous rendre visite</p>
+        </header>
+        
+        <div class="description">
+            <p>Nous sommes situés au cœur de la ville, facilement accessible depuis tous les points de transport en commun. N'hésitez pas à passer nous voir pendant nos heures d'ouverture.</p>
+        </div>
+        
+        <div class="map-container">
+            <div class="map-frame">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.6943581216324!2d13.5047971!3d43.6129051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d7f99161166cd%3A0x5528d7fae5c13929!2sAnkonautica!5e0!3m2!1sfr!2snl!4v1757770594993!5m2!1sfr!2snl"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <p>📍 Ankonautica | 📞 +39 071 123 4567 | 📍 Via Example 123, Ancona, Italie</p>
+            <p><a href="https://maps.google.com/?q=43.6129051,13.5047971" target="_blank">Ouvrir dans Google Maps</a></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2023 - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
 
 
     </footer>
@@ -1349,6 +1490,7 @@ Fax 071202090</li>
 </body>
 
 </html>
+
 
 
 
