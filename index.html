@@ -1163,6 +1163,41 @@ Fax 071202090</li>
                 <p>&copy; 2023 ANKONAUTICA.Iva 02558660425 Tutti i diritti riservati.</p>
             </div>
             <div>
+
+                <div style="width: 100%; height: 400px; margin-top: 50px; position: relative;">
+  <iframe
+    width="100%"
+    height="100%"
+    frameborder="0"
+    style="border:0; filter: grayscale(30%) brightness(110%); transition: filter 0.5s ease;"
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.6943581216324!2d13.5047971!3d43.6129051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132d7f99161166cd%3A0x5528d7fae5c13929!2sAnkonautica!5e0!3m2!1sfr!2snl!4v1757770594993!5m2!1sfr!2snl"
+    allowfullscreen=""
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+  
+  <!-- Overlay pour redirection au clic sur mobile -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: transparent; z-index: 10; cursor: pointer; transition: background-color 0.3s ease;" 
+       onclick="redirectToMaps()"></div>
+  
+  <!-- Bouton de redirection -->
+  <a href="https://maps.google.com/?q=43.6129051,13.5047971" target="_blank" 
+     style="position: absolute; bottom: 20px; right: 20px; background: #4285F4; color: white; padding: 12px 20px; border-radius: 8px; text-decoration: none; font-weight: 600; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); z-index: 20; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink: 0;">
+      <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2ZM12 11.5C10.62 11.5 9.5 10.38 9.5 9C9.5 7.62 10.62 6.5 12 6.5C13.38 6.5 14.5 7.62 14.5 9C14.5 10.38 13.38 11.5 12 11.5Z" fill="white"/>
+    </svg>
+    Ouvrir dans Maps
+  </a>
+</div>
+
+<script>
+  function redirectToMaps() {
+    // Vérifier si on est sur un appareil mobile
+    if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      window.location.href = "https://maps.google.com/?q=43.6129051,13.5047971";
+    }
+  }
+</script>
                 
         </div>
     <script>
@@ -1332,6 +1367,7 @@ Fax 071202090</li>
 </body>
 
 </html>
+
 
 
 
